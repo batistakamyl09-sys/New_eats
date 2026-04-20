@@ -1,18 +1,6 @@
 // Mock Data: Accurate NYC cheap eats to simulate database response
 const restaurants = [
-    {
-        id: 1,
-        name: "Mamoun's Falafel",
-        cuisine: "Middle Eastern • Halal",
-        rating: "4.8",
-        reviews: "12k+",
-        deliveryTime: "15-25 min",
-        avgPrice: 10,
-        priceText: "Meals under $10",
-        img: "https://images.unsplash.com/photo-1593504049359-715339e163be?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
-        lat: 40.7300, 
-        lng: -74.0006 // Greenwich Village
-    },
+
     {
         id: 2,
         name: "Joe's Pizza",
