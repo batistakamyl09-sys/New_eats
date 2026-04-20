@@ -16,11 +16,6 @@ xhr.setRequestHeader('x-rapidapi-host', 'maps-data.p.rapidapi.com');
 xhr.setRequestHeader('Content-Type', 'application/json');
 
 xhr.send(data);
-const restaurants = [
-
-
-
-];
 
 let map;
 
