@@ -1,19 +1,7 @@
 // Mock Data: Accurate NYC cheap eats to simulate database response
 const restaurants = [
 
-    {
-        id: 2,
-        name: "Joe's Pizza",
-        cuisine: "Pizza • Italian",
-        rating: "4.9",
-        reviews: "20k+",
-        deliveryTime: "20-30 min",
-        avgPrice: 8,
-        priceText: "$4.00 per slice",
-        img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
-        lat: 40.7305, 
-        lng: -74.0021 // Carmine St
-    },
+
     {
         id: 3,
         name: "Vanessa's Dumpling House",
