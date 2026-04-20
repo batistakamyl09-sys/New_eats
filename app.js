@@ -2,45 +2,7 @@
 const restaurants = [
 
 
-    {
-        id: 3,
-        name: "Vanessa's Dumpling House",
-        cuisine: "Chinese • Dumplings",
-        rating: "4.7",
-        reviews: "8k+",
-        deliveryTime: "25-40 min",
-        avgPrice: 12,
-        priceText: "Meals under $12",
-        img: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
-        lat: 40.7183, 
-        lng: -73.9918 // Chinatown
-    },
-    {
-        id: 4,
-        name: "Los Tacos No.1",
-        cuisine: "Mexican • Tacos",
-        rating: "4.9",
-        reviews: "15k+",
-        deliveryTime: "15-30 min",
-        avgPrice: 15,
-        priceText: "$5.00 per taco",
-        img: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
-        lat: 40.7571, 
-        lng: -73.9888 // Times Square Area
-    },
-    {
-        id: 5,
-        name: "The Halal Guys",
-        cuisine: "Middle Eastern • Street Food",
-        rating: "4.6",
-        reviews: "30k+",
-        deliveryTime: "20-35 min",
-        avgPrice: 15,
-        priceText: "Platters $10-$15",
-        img: "https://images.unsplash.com/photo-1628840042765-356cda07504e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
-        lat: 40.7618, 
-        lng: -73.9791 // 53rd and 6th
-    }
+
 ];
 
 let map;
