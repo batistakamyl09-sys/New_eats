@@ -1,4 +1,21 @@
 // Mock Data: Accurate NYC cheap eats to simulate database response
+const data = null;
+
+const xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener('readystatechange', function () {
+	if (this.readyState === this.DONE) {
+		console.log(this.responseText);
+	}
+});
+
+xhr.open('GET', 'https://maps-data.p.rapidapi.com/review.php?review_id=ChdDSUhNMG9nS0VJLVlfZFhBMzl2enVBRRAB');
+xhr.setRequestHeader('x-rapidapi-key', '95425b6aa1mshbfdf9ed251abb26p10dd83jsn6b3143fb2a10');
+xhr.setRequestHeader('x-rapidapi-host', 'maps-data.p.rapidapi.com');
+xhr.setRequestHeader('Content-Type', 'application/json');
+
+xhr.send(data);
 const restaurants = [
 
 
