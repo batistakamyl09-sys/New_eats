@@ -1,6 +1,6 @@
 // REPLACE WITH YOUR ACTUAL KEYS
 const supabaseUrl = 'https://adudvnzbjiddxqusmjzb.supabase.co';
-const supabaseKey = 'https://adudvnzbjiddxqusmjzb.supabase.co/rest/v1/';
+const supabaseKey = 'sb_publishable_AF84EE45iVum-xsJCbQ72w_AwezBRem';
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 const foodListContainer = document.getElementById('food-list');
