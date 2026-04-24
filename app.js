@@ -1,6 +1,6 @@
 // REPLACE WITH YOUR ACTUAL KEYS
 const supabaseUrl = 'YOUR_SUPABASE_PROJECT_URL';
-const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+const supabaseKey = 'https://adudvnzbjiddxqusmjzb.supabase.co/rest/v1/';
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 const foodListContainer = document.getElementById('food-list');
