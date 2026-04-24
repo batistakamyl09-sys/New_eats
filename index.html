@@ -3,47 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NYCheapEats | Grubhub Alternative</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>NYC Budget Bites Map</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">🍕 NYCheapEats</div>
-        <div class="search-container">
-            <input type="text" id="addressSearch" placeholder="Enter NYC delivery address or zip..." value="10012">
-            <button class="search-btn">Search</button>
+    <header class="navbar">
+        <h1>🗽 NYC Budget Bites</h1>
+        <p>40 Incredible Eats Under $20.</p>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-borough="All">All NYC</button>
+            <button class="filter-btn" data-borough="Manhattan">Manhattan</button>
+            <button class="filter-btn" data-borough="Brooklyn">Brooklyn</button>
+            <button class="filter-btn" data-borough="Queens">Queens</button>
+            <button class="filter-btn" data-borough="Bronx">The Bronx</button>
+            <button class="filter-btn" data-borough="Staten Island">Staten Island</button>
         </div>
-        <div class="user-actions">
-            <button class="login-btn">Sign In</button>
-            <button class="cart-btn">🛒 Cart</button>
-        </div>
-    </nav>
+    </header>
 
-    <section class="filters">
-        <div class="filter-group">
-            <button class="filter-chip active" data-max="20">Under $20</button>
-            <button class="filter-chip" data-max="15">Under $15</button>
-            <button class="filter-chip" data-max="10">Under $10</button>
-            <button class="filter-chip">Free Delivery</button>
-            <button class="filter-chip">Pickup</button>
-        </div>
-        <div class="view-toggle">
-            <button class="toggle-btn active" id="listViewBtn">List</button>
-            <button class="toggle-btn" id="mapViewBtn">Map</button>
-        </div>
-    </section>
-
-    <main class="main-container">
-        <div id="restaurantList" class="restaurant-grid">
-            </div>
-
-        <div id="mapContainer" class="map-container hidden">
-            <div id="map"></div>
-        </div>
+    <main class="container">
+        <div id="map" class="map-container"></div>
+        
+        <div class="results-count" id="results-count">Loading locations...</div>
+        
+        <div id="food-list" class="food-grid"></div>
     </main>
 
     <script src="app.js"></script>
-    <script async defer src="https://ybgnuyenwqqylxtlunzp.supabase.co/"></script>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
 </body>
 </html>
