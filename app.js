@@ -1,5 +1,5 @@
 // REPLACE WITH YOUR ACTUAL KEYS
-const supabaseUrl = 'https://supabase.com/dashboard/project/adudvnzbjiddxqusmjzb';
+const supabaseUrl = 'adudvnzbjiddxqusmjzb';
 const supabaseKey = 'https://adudvnzbjiddxqusmjzb.supabase.co/rest/v1/';
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
