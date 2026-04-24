@@ -1,117 +1,110 @@
-// Mock Data: Accurate NYC cheap eats to simulate database response
-const restaurants = [
+// REPLACE WITH YOUR ACTUAL KEYS
+const supabaseUrl = 'YOUR_SUPABASE_PROJECT_URL';
+const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-
-
-];
-
+const foodListContainer = document.getElementById('food-list');
+const countDisplay = document.getElementById('results-count');
 let map;
+let allFoods = []; 
+let mapMarkers = []; 
 
-// DOM Elements
-const grid = document.getElementById('restaurantList');
-const mapContainer = document.getElementById('mapContainer');
-const listViewBtn = document.getElementById('listViewBtn');
-const mapViewBtn = document.getElementById('mapViewBtn');
-
-// Render Cards Function
-function renderRestaurants(data) {
-    grid.innerHTML = '';
-    data.forEach(restaurant => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-            <img src="${restaurant.img}" alt="${restaurant.name}" class="card-img">
-            <div class="card-content">
-                <h3 class="card-title">${restaurant.name}</h3>
-                <p class="card-cuisine">${restaurant.cuisine}</p>
-                <div class="card-stats">
-                    <span class="rating">⭐ ${restaurant.rating} (${restaurant.reviews})</span>
-                    <span class="time">${restaurant.deliveryTime}</span>
-                </div>
-                <div class="price-tag">${restaurant.priceText}</div>
-            </div>
-        `;
-        grid.appendChild(card);
+// 1. Initialize Map
+window.initMap = function() {
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 10,
+        center: { lat: 40.7128, lng: -74.0060 }, // Center of NYC
+        styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }]
     });
+
+    fetchFoods(); 
+};
+
+// 2. Fetch Data from Supabase
+async function fetchFoods() {
+    try {
+        const { data, error } = await supabase.from('budget_foods').select('*');
+        if (error) throw error;
+        
+        allFoods = data; // Store the 40 items in memory
+        displayData(allFoods); 
+    } catch (err) {
+        console.error("Error:", err);
+        foodListContainer.innerHTML = `<p style="color: red;">Failed to load data from Supabase.</p>`;
+    }
 }
 
-// Toggle Views
-listViewBtn.addEventListener('click', () => {
-    grid.classList.remove('hidden');
-    mapContainer.classList.add('hidden');
-    listViewBtn.classList.add('active');
-    mapViewBtn.classList.remove('active');
-});
+// 3. Display Data & Update Map
+function displayData(foodsToDisplay) {
+    foodListContainer.innerHTML = '';
+    countDisplay.textContent = `Showing ${foodsToDisplay.length} locations`;
 
-mapViewBtn.addEventListener('click', () => {
-    grid.classList.add('hidden');
-    mapContainer.classList.remove('hidden');
-    mapViewBtn.classList.add('active');
-    listViewBtn.classList.remove('active');
-});
+    // Clear old map markers
+    mapMarkers.forEach(marker => marker.setMap(null));
+    mapMarkers = [];
 
-// Filter Functionality (Demonstrating the < $20 focus)
-document.querySelectorAll('.filter-chip').forEach(chip => {
-    chip.addEventListener('click', (e) => {
-        // Remove active class from others
-        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    // Create a Bounds object to zoom the map properly
+    const bounds = new google.maps.LatLngBounds();
+
+    foodsToDisplay.forEach(food => {
+        // --- Build HTML Card ---
+        const card = document.createElement('div');
+        card.className = 'card';
+        const formattedPrice = Number(food.price).toFixed(2);
+        card.innerHTML = `
+            <img src="${food.image_url}" alt="${food.food_item}">
+            <div class="card-info">
+                <div class="restaurant-name">${food.restaurant_name}</div>
+                <div class="food-item">${food.food_item}</div>
+                <div class="card-footer">
+                    <span class="price">$${formattedPrice}</span>
+                    <span class="borough">${food.borough}</span>
+                </div>
+            </div>
+        `;
+        foodListContainer.appendChild(card);
+
+        // --- Drop Map Pin ---
+        if (food.lat && food.lng) {
+            const position = { lat: food.lat, lng: food.lng };
+            const marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: food.restaurant_name
+            });
+
+            const infoWindow = new google.maps.InfoWindow({
+                content: `<strong>${food.restaurant_name}</strong><br>$${formattedPrice}`
+            });
+
+            marker.addListener("click", () => infoWindow.open(map, marker));
+            
+            mapMarkers.push(marker);
+            bounds.extend(position); // Add this pin's location to the map bounds
+        }
+    });
+
+    // Automatically zoom/pan the map to fit all the current pins perfectly
+    if (mapMarkers.length > 0) {
+        map.fitBounds(bounds);
+    }
+}
+
+// 4. Setup Filters
+document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        // Highlight active button
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
         e.target.classList.add('active');
 
-        const maxPrice = e.target.getAttribute('data-max');
-        if (maxPrice) {
-            const filtered = restaurants.filter(r => r.avgPrice <= parseInt(maxPrice));
-            renderRestaurants(filtered);
+        // Filter the array
+        const selectedBorough = e.target.getAttribute('data-borough');
+        
+        if (selectedBorough === 'All') {
+            displayData(allFoods);
         } else {
-            renderRestaurants(restaurants);
+            const filteredFoods = allFoods.filter(food => food.borough === selectedBorough);
+            displayData(filteredFoods);
         }
     });
 });
-
-// Google Maps Initialization Callback
-function initMap() {
-    // Default center to NYC (roughly lower Manhattan)
-    const nycCenter = { lat: 40.730610, lng: -73.992383 };
-    
-    map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 13,
-        center: nycCenter,
-        styles: [
-            // Minimalist map style to make markers pop
-            { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }
-        ]
-    });
-
-    // Drop markers for each restaurant
-    restaurants.forEach(restaurant => {
-        const marker = new google.maps.Marker({
-            position: { lat: restaurant.lat, lng: restaurant.lng },
-            map: map,
-            title: restaurant.name,
-            icon: {
-                // Using a custom SVG icon to mimic Grubhub/delivery pins
-                path: google.maps.SymbolPath.CIRCLE,
-                scale: 10,
-                fillColor: "#E23744",
-                fillOpacity: 1,
-                strokeWeight: 2,
-                strokeColor: "#ffffff",
-            }
-        });
-
-        const infoWindow = new google.maps.InfoWindow({
-            content: `
-                <div style="padding: 5px; color: #333;">
-                    <h3 style="margin: 0 0 5px 0; font-family: sans-serif;">${restaurant.name}</h3>
-                    <p style="margin: 0; font-weight: bold; color: #1a7e43;">${restaurant.priceText}</p>
-                </div>
-            `
-        });
-
-        marker.addListener("click", () => {
-            infoWindow.open(map, marker);
-        });
-    });
-}
-
-// Initial Render
-renderRestaurants(restaurants);
