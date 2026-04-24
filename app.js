@@ -14,7 +14,7 @@ window.initMap = function() {
     map = new google.maps.Map(document.getElementById("map"), {
         zoom: 10,
         center: { lat: 40.7128, lng: -74.0060 }, // Center of NYC
-        styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }]
+        style: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }]
     });
 
     fetchFoods(); 
