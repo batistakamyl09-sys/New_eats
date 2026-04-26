@@ -131,7 +131,7 @@ const restaurants = [
     priceValue: 20,
     price: "$10-20",
     phone: "718-258-1367",
-    img: "https://source.unsplash.com/400x300/?pizza,restaurant",
+    img: "https://source.unsplash.com/400x300/?pizza",
     featured: true,
     reviews: [
       { text: "Legendary pizza spot", rating: 5 },
@@ -202,7 +202,7 @@ const restaurants = [
     name: "Birria-Landia",
     borough: "Brooklyn",
     cuisine: "Mexican",
-    address: "Birria Truck, Brooklyn, NY",
+    address: "Brooklyn, NY",
     priceValue: 14,
     price: "$10-15",
     phone: "347-555-1111",
@@ -346,12 +346,12 @@ const restaurants = [
     img: "https://source.unsplash.com/400x300/?mexican-food",
     featured: false,
     reviews: [
-      { text: "Michelin quality cheap", rating: 5 },
-      { text: "Authentic dishes", rating: 5 }
+      { text: "Authentic dishes", rating: 5 },
+      { text: "High quality", rating: 5 }
     ]
   },
   {
-    name: "The Halal Guys Astoria",
+    name: "Halal Guys Astoria",
     borough: "Queens",
     cuisine: "Middle Eastern",
     address: "Astoria, NY",
