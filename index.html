@@ -7,21 +7,33 @@
 </head>
 <body>
 
-<header>
+<header class="header">
   <h1>🍔 Budget Bites NYC</h1>
-  <input type="text" id="search" placeholder="Find cheap eats...">
-</header>
 
-<section class="filters">
-  <select id="boroughFilter">
-    <option value="all">All Boroughs</option>
-    <option value="Manhattan">Manhattan</option>
-    <option value="Brooklyn">Brooklyn</option>
-    <option value="Queens">Queens</option>
-    <option value="Bronx">Bronx</option>
-    <option value="Staten Island">Staten Island</option>
-  </select>
-</section>
+  <input type="text" id="search" placeholder="Search cheap eats...">
+
+  <div class="controls">
+    <select id="boroughFilter">
+      <option value="all">All Boroughs</option>
+      <option value="Manhattan">Manhattan</option>
+      <option value="Brooklyn">Brooklyn</option>
+      <option value="Queens">Queens</option>
+      <option value="Bronx">Bronx</option>
+      <option value="Staten Island">Staten Island</option>
+    </select>
+
+    <select id="sortFilter">
+      <option value="default">Sort</option>
+      <option value="value">Best Value</option>
+      <option value="cheap">Cheapest</option>
+    </select>
+
+    <label class="toggle">
+      <input type="checkbox" id="budgetToggle">
+      Under $20
+    </label>
+  </div>
+</header>
 
 <main id="restaurantList"></main>
 
