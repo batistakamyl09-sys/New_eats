@@ -1,4 +1,6 @@
 const restaurants = [
+
+  // 🟢 MANHATTAN (8)
   {
     name: "Los Tacos No.1",
     borough: "Manhattan",
@@ -7,10 +9,12 @@ const restaurants = [
     priceValue: 15,
     price: "$10-15",
     phone: "212-256-0343",
-    affordability: 5,
-    bang: 5,
     img: "https://source.unsplash.com/400x300/?tacos",
-    reviews: ["Incredible tacos for cheap!", "Always fresh and worth the wait"]
+    featured: true,
+    reviews: [
+      { text: "Incredible tacos for cheap!", rating: 5 },
+      { text: "Always fresh and worth the wait", rating: 5 }
+    ]
   },
   {
     name: "Joe's Pizza",
@@ -20,11 +24,227 @@ const restaurants = [
     priceValue: 10,
     price: "$5-10",
     phone: "212-366-1182",
-    affordability: 5,
-    bang: 4,
     img: "https://source.unsplash.com/400x300/?pizza",
-    reviews: ["Classic NYC slice", "Cheap and satisfying"]
+    featured: true,
+    reviews: [
+      { text: "Classic NYC slice", rating: 4 },
+      { text: "Cheap and satisfying", rating: 5 }
+    ]
   },
+  {
+    name: "Halal Guys",
+    borough: "Manhattan",
+    cuisine: "Middle Eastern",
+    address: "W 53rd St & 6th Ave, New York, NY",
+    priceValue: 10,
+    price: "$8-12",
+    phone: "347-527-1505",
+    img: "https://source.unsplash.com/400x300/?gyro",
+    featured: true,
+    reviews: [
+      { text: "Legendary street food", rating: 5 },
+      { text: "Huge portions", rating: 5 }
+    ]
+  },
+  {
+    name: "Xi'an Famous Foods",
+    borough: "Manhattan",
+    cuisine: "Chinese",
+    address: "81 St Marks Pl, New York, NY",
+    priceValue: 14,
+    price: "$10-15",
+    phone: "212-786-2068",
+    img: "https://source.unsplash.com/400x300/?noodles",
+    featured: false,
+    reviews: [
+      { text: "Spicy and flavorful", rating: 5 },
+      { text: "Affordable and filling", rating: 4 }
+    ]
+  },
+  {
+    name: "Mamoun's Falafel",
+    borough: "Manhattan",
+    cuisine: "Middle Eastern",
+    address: "119 MacDougal St, New York, NY",
+    priceValue: 8,
+    price: "$5-10",
+    phone: "212-366-0444",
+    img: "https://source.unsplash.com/400x300/?falafel",
+    featured: false,
+    reviews: [
+      { text: "Cheap and delicious", rating: 5 },
+      { text: "Quick bite staple", rating: 4 }
+    ]
+  },
+  {
+    name: "Prince Street Pizza",
+    borough: "Manhattan",
+    cuisine: "Pizza",
+    address: "27 Prince St, New York, NY",
+    priceValue: 12,
+    price: "$6-12",
+    phone: "212-966-4100",
+    img: "https://source.unsplash.com/400x300/?pepperoni-pizza",
+    featured: true,
+    reviews: [
+      { text: "Best pepperoni slice", rating: 5 },
+      { text: "Crispy and rich", rating: 5 }
+    ]
+  },
+  {
+    name: "7th Street Burger",
+    borough: "Manhattan",
+    cuisine: "Burgers",
+    address: "91 E 7th St, New York, NY",
+    priceValue: 14,
+    price: "$10-15",
+    phone: "917-261-7000",
+    img: "https://source.unsplash.com/400x300/?burger",
+    featured: false,
+    reviews: [
+      { text: "Juicy burgers", rating: 5 },
+      { text: "Simple but perfect", rating: 4 }
+    ]
+  },
+  {
+    name: "Shake Shack",
+    borough: "Manhattan",
+    cuisine: "American",
+    address: "Madison Ave & E 23rd St, New York, NY",
+    priceValue: 18,
+    price: "$12-18",
+    phone: "646-747-7200",
+    img: "https://source.unsplash.com/400x300/?fast-food",
+    featured: false,
+    reviews: [
+      { text: "Consistent quality", rating: 4 },
+      { text: "Bit pricey but good", rating: 4 }
+    ]
+  },
+
+  // 🔵 BROOKLYN (8)
+  {
+    name: "Di Fara Pizza",
+    borough: "Brooklyn",
+    cuisine: "Pizza",
+    address: "1424 Ave J, Brooklyn, NY",
+    priceValue: 20,
+    price: "$10-20",
+    phone: "718-258-1367",
+    img: "https://source.unsplash.com/400x300/?pizza,restaurant",
+    featured: true,
+    reviews: [
+      { text: "Legendary pizza spot", rating: 5 },
+      { text: "Worth the wait", rating: 4 }
+    ]
+  },
+  {
+    name: "L&B Spumoni Gardens",
+    borough: "Brooklyn",
+    cuisine: "Pizza",
+    address: "2725 86th St, Brooklyn, NY",
+    priceValue: 15,
+    price: "$10-15",
+    phone: "718-449-1230",
+    img: "https://source.unsplash.com/400x300/?sicilian-pizza",
+    featured: true,
+    reviews: [
+      { text: "Famous square slice", rating: 5 },
+      { text: "Classic Brooklyn spot", rating: 5 }
+    ]
+  },
+  {
+    name: "Tacos El Bronco",
+    borough: "Brooklyn",
+    cuisine: "Mexican",
+    address: "4324 4th Ave, Brooklyn, NY",
+    priceValue: 12,
+    price: "$8-12",
+    phone: "718-554-0527",
+    img: "https://source.unsplash.com/400x300/?street-tacos",
+    featured: false,
+    reviews: [
+      { text: "Authentic tacos", rating: 5 },
+      { text: "Great late night food", rating: 4 }
+    ]
+  },
+  {
+    name: "BK Jani",
+    borough: "Brooklyn",
+    cuisine: "Pakistani",
+    address: "679 Grand St, Brooklyn, NY",
+    priceValue: 14,
+    price: "$10-15",
+    phone: "347-987-4321",
+    img: "https://source.unsplash.com/400x300/?burger,spicy",
+    featured: false,
+    reviews: [
+      { text: "Spicy burgers hit", rating: 5 },
+      { text: "Different and tasty", rating: 5 }
+    ]
+  },
+  {
+    name: "Paulie Gee’s Slice Shop",
+    borough: "Brooklyn",
+    cuisine: "Pizza",
+    address: "110 Franklin St, Brooklyn, NY",
+    priceValue: 12,
+    price: "$6-12",
+    phone: "347-987-3747",
+    img: "https://source.unsplash.com/400x300/?pizza-slice",
+    featured: false,
+    reviews: [
+      { text: "Creative slices", rating: 5 },
+      { text: "Affordable quality", rating: 4 }
+    ]
+  },
+  {
+    name: "Birria-Landia",
+    borough: "Brooklyn",
+    cuisine: "Mexican",
+    address: "Birria Truck, Brooklyn, NY",
+    priceValue: 14,
+    price: "$10-15",
+    phone: "347-555-1111",
+    img: "https://source.unsplash.com/400x300/?birria-tacos",
+    featured: true,
+    reviews: [
+      { text: "Insane birria tacos", rating: 5 },
+      { text: "Juicy and rich", rating: 5 }
+    ]
+  },
+  {
+    name: "Junior's Restaurant",
+    borough: "Brooklyn",
+    cuisine: "American",
+    address: "386 Flatbush Ave Ext, Brooklyn, NY",
+    priceValue: 18,
+    price: "$12-20",
+    phone: "718-852-5257",
+    img: "https://source.unsplash.com/400x300/?cheesecake",
+    featured: false,
+    reviews: [
+      { text: "Famous cheesecake", rating: 5 },
+      { text: "Portions are huge", rating: 4 }
+    ]
+  },
+  {
+    name: "Famous Halal Food",
+    borough: "Brooklyn",
+    cuisine: "Middle Eastern",
+    address: "Flatbush Ave, Brooklyn, NY",
+    priceValue: 10,
+    price: "$7-12",
+    phone: "718-975-3444",
+    img: "https://source.unsplash.com/400x300/?halal-food",
+    featured: false,
+    reviews: [
+      { text: "Cheap and filling", rating: 5 },
+      { text: "Great street food", rating: 4 }
+    ]
+  },
+
+  // 🟣 QUEENS (8)
   {
     name: "King of Falafel",
     borough: "Queens",
@@ -33,142 +253,360 @@ const restaurants = [
     priceValue: 12,
     price: "$8-12",
     phone: "718-728-9769",
-    affordability: 5,
-    bang: 5,
     img: "https://source.unsplash.com/400x300/?falafel",
-    reviews: ["Best falafel in NYC", "Huge portions for cheap"]
+    featured: true,
+    reviews: [
+      { text: "Best falafel", rating: 5 },
+      { text: "Huge portions", rating: 5 }
+    ]
+  },
+  {
+    name: "Arepas Cafe",
+    borough: "Queens",
+    cuisine: "Venezuelan",
+    address: "33-07 36th Ave, Queens, NY",
+    priceValue: 14,
+    price: "$10-15",
+    phone: "718-204-1401",
+    img: "https://source.unsplash.com/400x300/?arepas",
+    featured: false,
+    reviews: [
+      { text: "Flavorful arepas", rating: 5 },
+      { text: "Very filling", rating: 4 }
+    ]
+  },
+  {
+    name: "SriPraPhai",
+    borough: "Queens",
+    cuisine: "Thai",
+    address: "64-13 39th Ave, Queens, NY",
+    priceValue: 18,
+    price: "$12-20",
+    phone: "718-899-9599",
+    img: "https://source.unsplash.com/400x300/?thai-food",
+    featured: false,
+    reviews: [
+      { text: "Authentic Thai", rating: 5 },
+      { text: "Great spice levels", rating: 5 }
+    ]
+  },
+  {
+    name: "Nan Xiang Xiao Long Bao",
+    borough: "Queens",
+    cuisine: "Chinese",
+    address: "38-12 Prince St, Queens, NY",
+    priceValue: 15,
+    price: "$10-18",
+    phone: "718-321-3838",
+    img: "https://source.unsplash.com/400x300/?dumplings",
+    featured: true,
+    reviews: [
+      { text: "Soup dumplings amazing", rating: 5 },
+      { text: "Worth the hype", rating: 5 }
+    ]
+  },
+  {
+    name: "Taverna Kyclades",
+    borough: "Queens",
+    cuisine: "Greek",
+    address: "33-07 Ditmars Blvd, Queens, NY",
+    priceValue: 20,
+    price: "$15-20",
+    phone: "718-545-8666",
+    img: "https://source.unsplash.com/400x300/?greek-food",
+    featured: false,
+    reviews: [
+      { text: "Fresh seafood", rating: 5 },
+      { text: "Portions huge", rating: 4 }
+    ]
+  },
+  {
+    name: "Adda Indian Canteen",
+    borough: "Queens",
+    cuisine: "Indian",
+    address: "31-31 Thomson Ave, Queens, NY",
+    priceValue: 18,
+    price: "$12-18",
+    phone: "718-433-3888",
+    img: "https://source.unsplash.com/400x300/?indian-food",
+    featured: false,
+    reviews: [
+      { text: "Rich flavors", rating: 5 },
+      { text: "Affordable for quality", rating: 4 }
+    ]
+  },
+  {
+    name: "Casa Enrique",
+    borough: "Queens",
+    cuisine: "Mexican",
+    address: "5-48 49th Ave, Queens, NY",
+    priceValue: 20,
+    price: "$15-20",
+    phone: "347-448-6040",
+    img: "https://source.unsplash.com/400x300/?mexican-food",
+    featured: false,
+    reviews: [
+      { text: "Michelin quality cheap", rating: 5 },
+      { text: "Authentic dishes", rating: 5 }
+    ]
+  },
+  {
+    name: "The Halal Guys Astoria",
+    borough: "Queens",
+    cuisine: "Middle Eastern",
+    address: "Astoria, NY",
+    priceValue: 12,
+    price: "$8-12",
+    phone: "347-555-2222",
+    img: "https://source.unsplash.com/400x300/?gyro",
+    featured: false,
+    reviews: [
+      { text: "Reliable food", rating: 4 },
+      { text: "Good portions", rating: 4 }
+    ]
+  },
+
+  // 🟠 BRONX (8)
+  {
+    name: "Taqueria Tlaxcalli",
+    borough: "Bronx",
+    cuisine: "Mexican",
+    address: "2103 Starling Ave, Bronx, NY",
+    priceValue: 15,
+    price: "$10-15",
+    phone: "718-842-2100",
+    img: "https://source.unsplash.com/400x300/?tacos",
+    featured: true,
+    reviews: [
+      { text: "Authentic tacos", rating: 5 },
+      { text: "Great quality", rating: 5 }
+    ]
+  },
+  {
+    name: "Golden Krust",
+    borough: "Bronx",
+    cuisine: "Caribbean",
+    address: "1373 Jerome Ave, Bronx, NY",
+    priceValue: 10,
+    price: "$5-10",
+    phone: "718-220-0000",
+    img: "https://source.unsplash.com/400x300/?jamaican-food",
+    featured: false,
+    reviews: [
+      { text: "Great patties", rating: 5 },
+      { text: "Cheap eats", rating: 4 }
+    ]
+  },
+  {
+    name: "La Morada",
+    borough: "Bronx",
+    cuisine: "Mexican",
+    address: "308 Willis Ave, Bronx, NY",
+    priceValue: 15,
+    price: "$10-15",
+    phone: "718-401-2532",
+    img: "https://source.unsplash.com/400x300/?mexican-food",
+    featured: false,
+    reviews: [
+      { text: "Homestyle cooking", rating: 5 },
+      { text: "Authentic flavors", rating: 5 }
+    ]
+  },
+  {
+    name: "Beatstro",
+    borough: "Bronx",
+    cuisine: "American",
+    address: "135 Alexander Ave, Bronx, NY",
+    priceValue: 18,
+    price: "$12-20",
+    phone: "718-489-9397",
+    img: "https://source.unsplash.com/400x300/?soul-food",
+    featured: false,
+    reviews: [
+      { text: "Great vibe", rating: 5 },
+      { text: "Good portions", rating: 4 }
+    ]
+  },
+  {
+    name: "Casa Della Mozzarella",
+    borough: "Bronx",
+    cuisine: "Italian",
+    address: "604 E 187th St, Bronx, NY",
+    priceValue: 12,
+    price: "$8-15",
+    phone: "718-364-3867",
+    img: "https://source.unsplash.com/400x300/?sandwich",
+    featured: false,
+    reviews: [
+      { text: "Amazing sandwiches", rating: 5 },
+      { text: "Fresh ingredients", rating: 5 }
+    ]
+  },
+  {
+    name: "Sam's Fried Chicken",
+    borough: "Bronx",
+    cuisine: "Fast Food",
+    address: "Bronx, NY",
+    priceValue: 10,
+    price: "$6-12",
+    phone: "718-555-4444",
+    img: "https://source.unsplash.com/400x300/?fried-chicken",
+    featured: false,
+    reviews: [
+      { text: "Cheap and filling", rating: 4 },
+      { text: "Good late night", rating: 4 }
+    ]
+  },
+  {
+    name: "Kennedy Fried Chicken",
+    borough: "Bronx",
+    cuisine: "Fast Food",
+    address: "Bronx, NY",
+    priceValue: 9,
+    price: "$5-10",
+    phone: "718-555-3333",
+    img: "https://source.unsplash.com/400x300/?fried-chicken",
+    featured: false,
+    reviews: [
+      { text: "Budget staple", rating: 4 },
+      { text: "Quick meals", rating: 4 }
+    ]
+  },
+  {
+    name: "City Island Lobster House",
+    borough: "Bronx",
+    cuisine: "Seafood",
+    address: "691 Bridge St, Bronx, NY",
+    priceValue: 20,
+    price: "$15-20",
+    phone: "718-885-1459",
+    img: "https://source.unsplash.com/400x300/?seafood",
+    featured: false,
+    reviews: [
+      { text: "Fresh seafood", rating: 5 },
+      { text: "Nice portions", rating: 4 }
+    ]
+  },
+
+  // 🔴 STATEN ISLAND (8)
+  {
+    name: "Denino's Pizza",
+    borough: "Staten Island",
+    cuisine: "Pizza",
+    address: "524 Port Richmond Ave, Staten Island, NY",
+    priceValue: 18,
+    price: "$10-18",
+    phone: "718-442-9401",
+    img: "https://source.unsplash.com/400x300/?pizza",
+    featured: true,
+    reviews: [
+      { text: "Best pizza on island", rating: 5 },
+      { text: "Worth the trip", rating: 5 }
+    ]
+  },
+  {
+    name: "Lee's Tavern",
+    borough: "Staten Island",
+    cuisine: "Pizza",
+    address: "60 Hancock St, Staten Island, NY",
+    priceValue: 15,
+    price: "$10-15",
+    phone: "718-667-9749",
+    img: "https://source.unsplash.com/400x300/?pizza-slice",
+    featured: false,
+    reviews: [
+      { text: "Thin crust perfection", rating: 5 },
+      { text: "Local favorite", rating: 5 }
+    ]
+  },
+  {
+    name: "Lakruwana",
+    borough: "Staten Island",
+    cuisine: "Sri Lankan",
+    address: "668 Bay St, Staten Island, NY",
+    priceValue: 18,
+    price: "$12-20",
+    phone: "718-240-9240",
+    img: "https://source.unsplash.com/400x300/?curry",
+    featured: false,
+    reviews: [
+      { text: "Unique flavors", rating: 5 },
+      { text: "Great portions", rating: 4 }
+    ]
+  },
+  {
+    name: "Royal Crown Bakery",
+    borough: "Staten Island",
+    cuisine: "Bakery",
+    address: "1350 Hylan Blvd, Staten Island, NY",
+    priceValue: 10,
+    price: "$5-10",
+    phone: "718-668-8770",
+    img: "https://source.unsplash.com/400x300/?bakery",
+    featured: false,
+    reviews: [
+      { text: "Great pastries", rating: 5 },
+      { text: "Affordable sweets", rating: 4 }
+    ]
+  },
+  {
+    name: "Ralph's Italian Ices",
+    borough: "Staten Island",
+    cuisine: "Dessert",
+    address: "501 Port Richmond Ave, Staten Island, NY",
+    priceValue: 8,
+    price: "$5-10",
+    phone: "718-273-9700",
+    img: "https://source.unsplash.com/400x300/?ice-cream",
+    featured: false,
+    reviews: [
+      { text: "Refreshing treats", rating: 5 },
+      { text: "Cheap and fun", rating: 4 }
+    ]
+  },
+  {
+    name: "Goodfellas Pizza",
+    borough: "Staten Island",
+    cuisine: "Pizza",
+    address: "181 New Dorp Ln, Staten Island, NY",
+    priceValue: 14,
+    price: "$8-15",
+    phone: "718-987-2424",
+    img: "https://source.unsplash.com/400x300/?pizza",
+    featured: false,
+    reviews: [
+      { text: "Solid slices", rating: 4 },
+      { text: "Good value", rating: 4 }
+    ]
+  },
+  {
+    name: "Pastosa Ravioli",
+    borough: "Staten Island",
+    cuisine: "Italian",
+    address: "764 Forest Ave, Staten Island, NY",
+    priceValue: 15,
+    price: "$10-15",
+    phone: "718-351-2900",
+    img: "https://source.unsplash.com/400x300/?pasta",
+    featured: false,
+    reviews: [
+      { text: "Fresh pasta", rating: 5 },
+      { text: "Authentic Italian", rating: 5 }
+    ]
+  },
+  {
+    name: "New Asha Sri Lankan",
+    borough: "Staten Island",
+    cuisine: "Sri Lankan",
+    address: "Staten Island, NY",
+    priceValue: 15,
+    price: "$10-15",
+    phone: "718-815-1234",
+    img: "https://source.unsplash.com/400x300/?rice-curry",
+    featured: false,
+    reviews: [
+      { text: "Flavor packed", rating: 5 },
+      { text: "Hidden gem", rating: 5 }
+    ]
   }
 ];
-
-// FAVORITES
-let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
-// BUDGET SCORE
-function getBudgetScore(r) {
-  return ((r.affordability + r.bang) / 2).toFixed(1);
-}
-
-// RENDER
-function render(data) {
-  const list = document.getElementById("restaurantList");
-  list.innerHTML = "";
-
-  data.forEach(r => {
-    const fav = favorites.includes(r.name);
-
-    const card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML = `
-      <img src="${r.img}">
-      <div class="card-content">
-        <h3>${r.name} ${fav ? "❤️" : ""}</h3>
-        <p>${r.borough} • ${r.cuisine}</p>
-        <p>${r.price}</p>
-
-        <div>🔥 Budget Score: ${getBudgetScore(r)}</div>
-        <div>⭐ ${r.affordability} | 🍽 ${r.bang}</div>
-
-        <button onclick="toggleFavorite('${r.name}')">
-          ${fav ? "Remove Favorite" : "Add Favorite"}
-        </button>
-      </div>
-    `;
-
-    card.onclick = (e) => {
-      if (e.target.tagName !== "BUTTON") openModal(r);
-    };
-
-    list.appendChild(card);
-  });
-}
-
-// FAVORITE TOGGLE
-function toggleFavorite(name) {
-  if (favorites.includes(name)) {
-    favorites = favorites.filter(f => f !== name);
-  } else {
-    favorites.push(name);
-  }
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-  applyFilters();
-}
-
-// MODAL
-function openModal(r) {
-  const modal = document.getElementById("modal");
-  const body = document.getElementById("modalBody");
-
-  const avgReviewScore = ((r.affordability + r.bang) / 2).toFixed(1);
-
-  body.innerHTML = `
-    <h2>${r.name}</h2>
-    <p><strong>${r.cuisine}</strong></p>
-    <p>${r.address}</p>
-    <p>${r.price}</p>
-
-    <h3>Budget Score: 🔥 ${avgReviewScore}</h3>
-
-    <h3>Reviews</h3>
-    ${r.reviews.map(rv => `<p>• ${rv}</p>`).join("")}
-
-    <br>
-
-    <a href="tel:${r.phone}">
-      <button>📞 Call</button>
-    </a>
-
-    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.name + " " + r.address)}" target="_blank">
-      <button>📍 Make the travel?</button>
-    </a>
-  `;
-
-  modal.classList.remove("hidden");
-}
-
-// CLOSE MODAL
-document.getElementById("closeModal").onclick = () => {
-  document.getElementById("modal").classList.add("hidden");
-};
-
-// FILTER + SEARCH + SORT
-function applyFilters() {
-  let filtered = [...restaurants];
-
-  const search = document.getElementById("search").value.toLowerCase();
-  const borough = document.getElementById("boroughFilter").value;
-  const sort = document.getElementById("sort")?.value;
-  const cheapOnly = document.getElementById("cheapToggle")?.checked;
-
-  if (search) {
-    filtered = filtered.filter(r =>
-      r.name.toLowerCase().includes(search) ||
-      r.cuisine.toLowerCase().includes(search)
-    );
-  }
-
-  if (borough !== "all") {
-    filtered = filtered.filter(r => r.borough === borough);
-  }
-
-  if (cheapOnly) {
-    filtered = filtered.filter(r => r.priceValue <= 15);
-  }
-
-  if (sort === "value") {
-    filtered.sort((a, b) => getBudgetScore(b) - getBudgetScore(a));
-  }
-
-  if (sort === "cheap") {
-    filtered.sort((a, b) => a.priceValue - b.priceValue);
-  }
-
-  render(filtered);
-}
-
-// EVENTS
-document.getElementById("search").addEventListener("input", applyFilters);
-document.getElementById("boroughFilter").addEventListener("change", applyFilters);
-
-// INIT
-render(restaurants);
