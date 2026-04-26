@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NYC Budget Bites Map</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta charset="UTF-8">
+  <title>Budget Bites NYC</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="navbar">
-        <h1>🗽 NYC Budget Bites</h1>
-        <p>40 Incredible Eats Under $20.</p>
-        
-        <div class="filters">
-            <button class="filter-btn active" data-borough="All">All NYC</button>
-            <button class="filter-btn" data-borough="Manhattan">Manhattan</button>
-            <button class="filter-btn" data-borough="Brooklyn">Brooklyn</button>
-            <button class="filter-btn" data-borough="Queens">Queens</button>
-            <button class="filter-btn" data-borough="Bronx">The Bronx</button>
-            <button class="filter-btn" data-borough="Staten Island">Staten Island</button>
-        </div>
-    </header>
 
-    <main class="container">
-        <div id="map" class="map-container"></div>
-        
-        <div class="results-count" id="results-count">Loading locations...</div>
-        
-        <div id="food-list" class="food-grid"></div>
-    </main>
+<header>
+  <h1>🍔 Budget Bites NYC</h1>
+  <input type="text" id="search" placeholder="Search for affordable food...">
+</header>
 
-    <script src="app.js"></script>
-    
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
+<section class="filters">
+  <select id="boroughFilter">
+    <option value="all">All Boroughs</option>
+    <option value="Manhattan">Manhattan</option>
+    <option value="Brooklyn">Brooklyn</option>
+    <option value="Queens">Queens</option>
+    <option value="Bronx">Bronx</option>
+    <option value="Staten Island">Staten Island</option>
+  </select>
+</section>
+
+<main id="restaurantList"></main>
+
+<script src="script.js"></script>
 </body>
 </html>
