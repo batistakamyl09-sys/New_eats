@@ -1,53 +1,66 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
+  font-family: Arial, sans-serif;
   background: #0a0a0a;
   color: white;
 }
 
-header {
+/* HEADER */
+.header {
+  position: sticky;
+  top: 0;
   background: #00c853;
+  color: black;
   padding: 15px;
   text-align: center;
-  color: black;
+  z-index: 1000;
 }
 
-header input {
-  margin-top: 10px;
+.search-bar input {
+  width: 60%;
   padding: 10px;
-  width: 80%;
-  border-radius: 5px;
+  margin-top: 10px;
+  border-radius: 6px;
   border: none;
 }
 
-.filters {
-  text-align: center;
-  margin: 10px;
+/* CONTROLS */
+.controls {
+  margin-top: 10px;
 }
 
-select {
+.controls select {
   padding: 8px;
-  border-radius: 5px;
+  margin: 5px;
+  border-radius: 6px;
 }
 
+.toggle {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+/* GRID */
 #restaurantList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
   padding: 20px;
-  gap: 15px;
 }
 
+/* CARD */
 .card {
   background: #111;
   border: 1px solid #00c853;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  cursor: pointer;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .card:hover {
-  transform: scale(1.03);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 15px #00c853;
 }
 
 .card img {
@@ -57,20 +70,32 @@ select {
 }
 
 .card-content {
-  padding: 10px;
+  padding: 12px;
 }
 
-.rating {
+.card h3 {
   margin: 5px 0;
 }
 
+.rating {
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+/* BUTTONS */
 button {
   background: #00c853;
   color: black;
   border: none;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 6px;
+  margin: 5px 5px 0 0;
   cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #00e676;
 }
 
 /* MODAL */
@@ -80,7 +105,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,14 +117,28 @@ button {
 
 .modal-content {
   background: #111;
+  border: 1px solid #00c853;
   padding: 20px;
-  border-radius: 10px;
-  width: 80%;
+  border-radius: 12px;
+  width: 90%;
   max-width: 500px;
 }
 
 #closeModal {
   float: right;
+  font-size: 22px;
   cursor: pointer;
-  font-size: 24px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .search-bar input {
+    width: 90%;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
