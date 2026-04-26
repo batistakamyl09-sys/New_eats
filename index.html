@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Budget Bites NYC</title>
-  <link rel="styleheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
   <h1>🍔 Budget Bites NYC</h1>
-  <input type="text" id="search" placeholder="Search for affordable food...">
+  <input type="text" id="search" placeholder="Find cheap eats...">
 </header>
 
 <section class="filters">
@@ -24,6 +24,14 @@
 </section>
 
 <main id="restaurantList"></main>
+
+<!-- MODAL -->
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <span id="closeModal">&times;</span>
+    <div id="modalBody"></div>
+  </div>
+</div>
 
 <script src="app.js"></script>
 </body>
