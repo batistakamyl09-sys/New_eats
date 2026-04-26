@@ -4,14 +4,14 @@ const restaurants = [
     borough: "Manhattan",
     cuisine: "Mexican",
     address: "75 9th Ave, New York, NY",
+    priceValue: 15,
     price: "$10-15",
     phone: "212-256-0343",
-    affordability: 5,
-    bang: 5,
     img: "https://source.unsplash.com/400x300/?tacos",
+    featured: true,
     reviews: [
-      "Incredible tacos for cheap!",
-      "Always fresh and worth the wait"
+      { text: "Incredible tacos for cheap!", rating: 5 },
+      { text: "Always fresh and worth the wait", rating: 5 }
     ]
   },
   {
@@ -19,127 +19,112 @@ const restaurants = [
     borough: "Manhattan",
     cuisine: "Pizza",
     address: "7 Carmine St, New York, NY",
+    priceValue: 10,
     price: "$5-10",
     phone: "212-366-1182",
-    affordability: 5,
-    bang: 4,
     img: "https://source.unsplash.com/400x300/?pizza",
+    featured: true,
     reviews: [
-      "Classic NYC slice",
-      "Cheap and satisfying"
+      { text: "Classic NYC slice", rating: 4 },
+      { text: "Cheap and satisfying", rating: 5 }
     ]
   },
-
-  {
-    name: "Di Fara Pizza",
-    borough: "Brooklyn",
-    cuisine: "Pizza",
-    address: "1424 Ave J, Brooklyn, NY",
-    price: "$10-20",
-    phone: "718-258-1367",
-    affordability: 3,
-    bang: 5,
-    img: "https://source.unsplash.com/400x300/?pizza,restaurant",
-    reviews: [
-      "Legendary pizza spot",
-      "Expensive but worth every bite"
-    ]
-  },
-
   {
     name: "King of Falafel",
     borough: "Queens",
     cuisine: "Middle Eastern",
     address: "3015 Broadway, Astoria, NY",
+    priceValue: 12,
     price: "$8-12",
     phone: "718-728-9769",
-    affordability: 5,
-    bang: 5,
     img: "https://source.unsplash.com/400x300/?falafel",
+    featured: false,
     reviews: [
-      "Best falafel in NYC",
-      "Huge portions for cheap"
+      { text: "Best falafel in NYC", rating: 5 },
+      { text: "Huge portions for cheap", rating: 5 }
     ]
   },
-
   {
-    name: "Taqueria Tlaxcalli",
-    borough: "Bronx",
-    cuisine: "Mexican",
-    address: "2103 Starling Ave, Bronx, NY",
-    price: "$8-15",
-    phone: "718-842-2100",
-    affordability: 4,
-    bang: 5,
-    img: "https://source.unsplash.com/400x300/?mexican-food",
-    reviews: [
-      "Authentic tacos",
-      "Great quality for price"
-    ]
-  },
-
-  {
-    name: "Denino's Pizza",
-    borough: "Staten Island",
+    name: "Di Fara Pizza",
+    borough: "Brooklyn",
     cuisine: "Pizza",
-    address: "524 Port Richmond Ave, Staten Island, NY",
-    price: "$10-18",
-    phone: "718-442-9401",
-    affordability: 4,
-    bang: 5,
-    img: "https://source.unsplash.com/400x300/?pizza-slice",
+    address: "1424 Ave J, Brooklyn, NY",
+    priceValue: 20,
+    price: "$10-20",
+    phone: "718-258-1367",
+    img: "https://source.unsplash.com/400x300/?pizza,restaurant",
+    featured: true,
     reviews: [
-      "Best pizza on Staten Island",
-      "Worth the trip"
+      { text: "Legendary pizza spot", rating: 5 },
+      { text: "Pricey but worth it", rating: 4 }
     ]
   }
 ];
+
+// 🔥 Budget Bites rating system
+function calculateRatings(reviews, priceValue) {
+  const avgReview = reviews.reduce((a, b) => a + b.rating, 0) / reviews.length;
+
+  const bang = Math.round(avgReview);
+
+  let affordability = 5;
+  if (priceValue > 20) affordability = 2;
+  else if (priceValue > 15) affordability = 3;
+  else if (priceValue > 10) affordability = 4;
+
+  return { bang, affordability };
+}
 
 function render(data) {
   const list = document.getElementById("restaurantList");
   list.innerHTML = "";
 
   data.forEach(r => {
+    const { bang, affordability } = calculateRatings(r.reviews, r.priceValue);
+
     const card = document.createElement("div");
     card.className = "card";
 
     card.innerHTML = `
       <img src="${r.img}">
       <div class="card-content">
+        ${r.featured ? `<span style="color:#00c853;">★ Featured</span>` : ""}
         <h3>${r.name}</h3>
         <p>${r.borough} • ${r.cuisine}</p>
         <p>${r.price}</p>
-        <div class="rating">⭐ ${r.affordability}</div>
-        <div class="rating">🍽 ${r.bang}</div>
+        <div class="rating">⭐ ${affordability}</div>
+        <div class="rating">🍽 ${bang}</div>
       </div>
     `;
 
-    card.onclick = () => openModal(r);
-
+    card.onclick = () => openModal(r, bang, affordability);
     list.appendChild(card);
   });
 }
 
-function openModal(r) {
+function openModal(r, bang, affordability) {
   const modal = document.getElementById("modal");
   const body = document.getElementById("modalBody");
 
   body.innerHTML = `
     <h2>${r.name}</h2>
-    <p><strong>Cuisine:</strong> ${r.cuisine}</p>
-    <p><strong>Address:</strong> ${r.address}</p>
-    <p><strong>Price:</strong> ${r.price}</p>
+    <p><strong>${r.cuisine}</strong> • ${r.borough}</p>
 
-    <p>⭐ Affordability: ${r.affordability}</p>
-    <p>🍽 Bang for Buck: ${r.bang}</p>
+    <p><strong>📍 Address:</strong> ${r.address}</p>
+    <p><strong>💲 Price:</strong> ${r.price}</p>
 
-    <h3>Reviews</h3>
-    ${r.reviews.map(rv => `<p>• ${rv}</p>`).join("")}
+    <hr>
+
+    <p>⭐ Affordability: ${affordability}</p>
+    <p>🍽 Bang for Buck: ${bang}</p>
+
+    <h3>💬 Reviews</h3>
+    ${r.reviews.map(rv => `<p>• ${rv.text}</p>`).join("")}
 
     <br>
 
     <a href="tel:${r.phone}">
-      <button>📞 Call</button>
+      <button>📞 Call Restaurant</button>
     </a>
 
     <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.name + " " + r.address)}" target="_blank">
@@ -154,17 +139,28 @@ document.getElementById("closeModal").onclick = () => {
   document.getElementById("modal").classList.add("hidden");
 };
 
-// Search
+// 🔍 Search
 document.getElementById("search").addEventListener("input", e => {
   const value = e.target.value.toLowerCase();
-  render(restaurants.filter(r => r.name.toLowerCase().includes(value)));
+  filterAndRender();
 });
 
-// Filter
-document.getElementById("boroughFilter").addEventListener("change", e => {
-  const val = e.target.value;
-  if (val === "all") return render(restaurants);
-  render(restaurants.filter(r => r.borough === val));
-});
+// 🏙 Borough filter + 💲 budget filter
+function filterAndRender() {
+  const search = document.getElementById("search").value.toLowerCase();
+  const borough = document.getElementById("boroughFilter").value;
+
+  let filtered = restaurants.filter(r =>
+    r.name.toLowerCase().includes(search)
+  );
+
+  if (borough !== "all") {
+    filtered = filtered.filter(r => r.borough === borough);
+  }
+
+  render(filtered);
+}
+
+document.getElementById("boroughFilter").addEventListener("change", filterAndRender);
 
 render(restaurants);
