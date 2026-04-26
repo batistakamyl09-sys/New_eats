@@ -3,28 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <title>Budget Bites NYC</title>
-  <link rel="styleheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header>
+<header class="header">
   <h1>🍔 Budget Bites NYC</h1>
-  <input type="text" id="search" placeholder="Search for affordable food...">
-</header>
 
-<section class="filters">
-  <select id="boroughFilter">
-    <option value="all">All Boroughs</option>
-    <option value="Manhattan">Manhattan</option>
-    <option value="Brooklyn">Brooklyn</option>
-    <option value="Queens">Queens</option>
-    <option value="Bronx">Bronx</option>
-    <option value="Staten Island">Staten Island</option>
-  </select>
-</section>
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search cheap eats...">
+  </div>
+
+  <div class="controls">
+    <select id="boroughFilter">
+      <option value="all">All Boroughs</option>
+      <option value="Manhattan">Manhattan</option>
+      <option value="Brooklyn">Brooklyn</option>
+      <option value="Queens">Queens</option>
+      <option value="Bronx">Bronx</option>
+      <option value="Staten Island">Staten Island</option>
+    </select>
+
+    <select id="sortFilter">
+      <option value="default">Sort</option>
+      <option value="value">Best Value</option>
+      <option value="cheap">Cheapest</option>
+    </select>
+
+    <label class="toggle">
+      <input type="checkbox" id="budgetToggle">
+      Under $20
+    </label>
+  </div>
+</header>
 
 <main id="restaurantList"></main>
 
-<script src="app.js"></script>
+<!-- MODAL -->
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <span id="closeModal">&times;</span>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
