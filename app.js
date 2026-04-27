@@ -608,6 +608,8 @@ const restaurants = [
       { text: "Hidden gem", rating: 5 }
     ]
   }
+];
+ document.addEventListener("DOMContentLoaded", () => {
 ];document.addEventListener("DOMContentLoaded", () => {
 function openModal(r, bang, affordability) {
   const modal = document.getElementById("modal");
@@ -621,29 +623,91 @@ function openModal(r, bang, affordability) {
 
     <img src="${r.img}" alt="${r.name}">
 
-    <p><strong>📍 Address:</strong> ${r.address}</p>
-    <p><strong>💲 Price:</strong> ${r.price}</p>
+      // 🔥 IMAGE SLIDESHOW
+      let currentIndex = 0;
+      const img = document.createElement("img");
+      img.src = r.images[0];
+
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % r.images.length;
+        img.src = r.images[currentIndex];
+      }, 2500);
+
+      card.appendChild(img);
+
+      const content = document.createElement("div");
+      content.className = "card-content";
+
+      content.innerHTML = `
+        ${r.featured ? `<span style="color:#00c853;">★ Featured</span>` : ""}
+        <h3>${r.name}</h3>
+        <p>${r.borough} • ${r.cuisine}</p>
+        <p>${r.price}</p>
+        <div class="rating">⭐ ${affordability}</div>
+        <div class="rating">🍽 ${bang}</div>
+      `;
+
+      card.appendChild(content);
+
+      card.onclick = () => openModal(r, bang, affordability);
+
+      card.innerHTML = `
+        <img src="${r.img}">
+        <div class="card-content">
+          ${r.featured ? `<span style="color:#00c853;">★ Featured</span>` : ""}
+          <h3>${r.name}</h3>
+          <p>${r.borough} • ${r.cuisine}</p>
+          <p>${r.price}</p>
+          <div class="rating">⭐ ${affordability}</div>
+          <div class="rating">🍽 ${bang}</div>
+        </div>
+      `;
 
     <hr>
 
     <p>⭐ Affordability: ${affordability}</p>
     <p>🍽 Bang for Buck: ${bang}</p>
 
-    <h3>💬 Reviews</h3>
-    ${r.reviews.map(rv => `<p>• ${rv.text}</p>`).join("")}
+    document.body.style.overflow = "hidden";
+
+    body.innerHTML = `
+      <h2>${r.name}</h2>
+      <p><strong>${r.cuisine}</strong> • ${r.borough}</p>
+      <p><strong>📍 Address:</strong> ${r.address}</p>
+      <p><strong>💲 Price:</strong> ${r.price}</p>
+      <hr>
+      <p>⭐ Affordability: ${affordability}</p>
+      <p>🍽 Bang for Buck: ${bang}</p>
+      <h3>💬 Reviews</h3>
+      ${r.reviews.map(rv => `<p>• ${rv.text}</p>`).join("")}
 
     <a href="tel:${r.phone}">
       <button>📞 Call Restaurant</button>
     </a>
 
-    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.name + " " + r.address)}" target="_blank">
-      <button>📍 Make the travel?</button>
-    </a>
-  `;
+      <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.name + " " + r.address)}" target="_blank">
+        <button>📍 Directions</button>
+        <button>📍 Make the travel?</button>
+      </a>
+    `;
 
   modal.classList.add("active");
 
-  // CLOSE BUTTON
+  // ❌ CLOSE BUTTON
+  document.getElementById("closeModal").onclick = () => {
+    document.getElementById("modal").classList.add("hidden");
+    document.body.style.overflow = "auto";
+  };
+
+  // ❌ CLICK OUTSIDE CLOSE
+  const modal = document.getElementById("modal");
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "auto";
+    }
+  });
+
   document.getElementById("closeModal").onclick = () => {
     modal.classList.remove("active");
   };
