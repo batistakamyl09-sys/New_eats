@@ -1,3 +1,4 @@
+const restaurants = [
   // 🟢 MANHATTAN (8)
 
   {
@@ -1221,49 +1222,25 @@
   }
 
 ];document.addEventListener("DOMContentLoaded", () => {
+function openModal(r, bang, affordability) {
+  const modal = document.getElementById("modal");
+  const body = document.getElementById("modalBody");
 
-  function calculateRatings(reviews, priceValue) {
-    const avg = reviews.reduce((a, b) => a + b.rating, 0) / reviews.length;
-    const bang = Math.round(avg);
+  body.innerHTML = `
+    <span id="closeModal">&times;</span>
 
-    let affordability = 5;
-    if (priceValue > 20) affordability = 2;
-    else if (priceValue > 15) affordability = 3;
-    else if (priceValue > 10) affordability = 4;
+    <h2>${r.name}</h2>
+    <p><strong>${r.cuisine}</strong> • ${r.borough}</p>
 
-    return { bang, affordability };
-  }
+    <img src="${r.img}" alt="${r.name}">
 
-  function render(data) {
-    const list = document.getElementById("restaurantList");
-    list.innerHTML = "";
+    <p><strong>📍 Address:</strong> ${r.address}</p>
+    <p><strong>💲 Price:</strong> ${r.price}</p>
 
-    data.forEach(r => {
-      const { bang, affordability } = calculateRatings(r.reviews, r.priceValue);
+    <hr>
 
-      const card = document.createElement("div");
-      card.className = "card";
-
-      card.innerHTML = `
-        <img src="${r.img}">
-        <div class="card-content">
-          ${r.featured ? `<span style="color:#00c853;">★ Featured</span>` : ""}
-          <h3>${r.name}</h3>
-          <p>${r.borough} • ${r.cuisine}</p>
-          <p>${r.price}</p>
-          <div class="rating">⭐ ${affordability}</div>
-          <div class="rating">🍽 ${bang}</div>
-        </div>
-      `;
-
-      card.onclick = () => openModal(r, bang, affordability);
-      list.appendChild(card);
-    });
-  }
-
-  function openModal(r, bang, affordability) {
-    const modal = document.getElementById("modal");
-    const body = document.getElementById("modalBody");
+    <p>⭐ Affordability: ${affordability}</p>
+    <p>🍽 Bang for Buck: ${bang}</p>
 
     body.innerHTML = `
       <span id="closeModal">&times;</span>
@@ -1284,32 +1261,26 @@
       <h3>💬 Reviews</h3>
       ${r.reviews.map(rv => `<p>• ${rv.text}</p>`).join("")}
 
-      <a href="tel:${r.phone}">
-        <button>📞 Call Restaurant</button>
-      </a>
+    <a href="tel:${r.phone}">
+      <button>📞 Call Restaurant</button>
+    </a>
 
-      <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.name + " " + r.address)}" target="_blank">
-        <button>📍 Directions</button>
-      </a>
-    `;
+    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.name + " " + r.address)}" target="_blank">
+      <button>📍 Make the travel?</button>
+    </a>
+  `;
 
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
+  modal.classList.add("active");
 
-    // Close button
-    document.getElementById("closeModal").onclick = () => {
-      modal.classList.remove("active");
-      document.body.style.overflow = "auto";
-    };
+  // CLOSE BUTTON
+  document.getElementById("closeModal").onclick = () => {
+    modal.classList.remove("active");
+  };
+}
 
-    // Click outside
-    modal.onclick = (e) => {
-      if (e.target === modal) {
-        modal.classList.remove("active");
-        document.body.style.overflow = "auto";
-      }
-    };
+// CLICK OUTSIDE TO CLOSE
+document.getElementById("modal").addEventListener("click", (e) => {
+  if (e.target.id === "modal") {
+    e.currentTarget.classList.remove("active");
   }
-
-  render(restaurants);
 });
