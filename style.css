@@ -1,45 +1,100 @@
+/* 🔲 MODAL OVERLAY */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
 
-  display: none; /* 🔥 FIX */
+  display: flex;
   justify-content: center;
   align-items: center;
 
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.25s ease;
   z-index: 2000;
 }
 
-.modal.active {
-  display: flex;
+/* ✅ JS will toggle this */
+.modal:not(.hidden) {
+  opacity: 1;
+  pointer-events: all;
 }
 
-/* MODAL CONTENT */
+/* 🧱 MODAL CONTENT */
 .modal-content {
   position: relative;
   background: #111;
   border: 1px solid #00c853;
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 14px;
   width: 90%;
-  max-width: 500px;
+  max-width: 520px;
 
-  animation: fadeIn 0.3s ease;
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+
+  transition: all 0.25s ease;
 }
 
-/* CLOSE BUTTON (REAL X BUTTON) */
+/* animate in */
+.modal:not(.hidden) .modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* ❌ CLOSE BUTTON */
 #closeModal {
   position: absolute;
   top: 10px;
   right: 15px;
   font-size: 26px;
   cursor: pointer;
-  color: white;
+  color: #ccc;
+  transition: 0.2s;
 }
 
 #closeModal:hover {
   color: #00c853;
+}
+
+/* 🖼 MODAL IMAGE */
+#modalImg {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+
+/* ⬅➡ IMAGE NAV BUTTONS */
+#prev, #next {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  border: 1px solid #00c853;
+  color: white;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+#prev:hover, #next:hover {
+  background: #00c853;
+}
+
+#prev { left: 10px; }
+#next { right: 10px; }
+
+/* 📱 MOBILE POLISH */
+@media (max-width: 500px) {
+  .modal-content {
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  #closeModal {
+    font-size: 22px;
+  }
 }
