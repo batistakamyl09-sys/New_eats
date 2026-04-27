@@ -1,4 +1,3 @@
-const restaurants = [
   // 🟢 MANHATTAN (8)
 
   {
@@ -17,9 +16,9 @@ const restaurants = [
 
     phone: "212-256-0343",
 
-    img:   "https://i.imgur.com/abc123.jpg"
+    img:   "https://i.imgur.com/abc123.jpg",
 
-    "https://i.imgur.com/def456.jpg"
+    "https://i.imgur.com/def456.jpg",
 
     "https://i.imgur.com/ghi789.jpg",
 
@@ -1222,65 +1221,119 @@ const restaurants = [
   }
 
 ];document.addEventListener("DOMContentLoaded", () => {
-function openModal(r, bang, affordability) {
+  console.log("JS loaded ✅");
+
+  const list = document.getElementById("restaurantList");
+  const searchInput = document.getElementById("search");
+  const boroughFilter = document.getElementById("boroughFilter");
+  const budgetToggle = document.getElementById("budgetToggle");
+  const sortFilter = document.getElementById("sortFilter");
   const modal = document.getElementById("modal");
-  const body = document.getElementById("modalBody");
+  const modalBody = document.getElementById("modalBody");
+  const closeModal = document.getElementById("closeModal");
 
-  body.innerHTML = `
-    <span id="closeModal">&times;</span>
+  if (!list) {
+    console.error("❌ restaurantList not found");
+    return;
+  }
 
-    <h2>${r.name}</h2>
-    <p><strong>${r.cuisine}</strong> • ${r.borough}</p>
+  function calculateRatings(reviews, priceValue) {
+    const avg = reviews.reduce((a, b) => a + b.rating, 0) / reviews.length;
+    const bang = Math.round(avg);
 
-    <img src="${r.img}" alt="${r.name}">
+    let affordability = 5;
+    if (priceValue > 20) affordability = 2;
+    else if (priceValue > 15) affordability = 3;
+    else if (priceValue > 10) affordability = 4;
 
-    <p><strong>📍 Address:</strong> ${r.address}</p>
-    <p><strong>💲 Price:</strong> ${r.price}</p>
+    return { bang, affordability };
+  }
 
-    <hr>
+  function render(data) {
+    list.innerHTML = "";
 
-    <p>⭐ Affordability: ${affordability}</p>
-    <p>🍽 Bang for Buck: ${bang}</p>
+    if (!data.length) {
+      list.innerHTML = "<p style='color:white;'>No restaurants found</p>";
+      return;
+    }
 
-    body.innerHTML = `
-      <span id="closeModal">&times;</span>
+    data.forEach(r => {
+      const { bang, affordability } = calculateRatings(r.reviews, r.priceValue);
 
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <img src="${r.img}" onerror="this.src='https://via.placeholder.com/400x300'">
+        <div class="card-content">
+          ${r.featured ? `<span style="color:#00c853;">★ Featured</span>` : ""}
+          <h3>${r.name}</h3>
+          <p>${r.borough} • ${r.cuisine}</p>
+          <p>${r.price}</p>
+          <div class="rating">⭐ ${affordability}</div>
+          <div class="rating">🍽 ${bang}</div>
+        </div>
+      `;
+
+      card.onclick = () => openModal(r, bang, affordability);
+      list.appendChild(card);
+    });
+  }
+
+  function openModal(r, bang, affordability) {
+    modalBody.innerHTML = `
       <h2>${r.name}</h2>
       <p><strong>${r.cuisine}</strong> • ${r.borough}</p>
-
-      <img src="${r.img}" alt="${r.name}">
-
       <p><strong>📍 Address:</strong> ${r.address}</p>
       <p><strong>💲 Price:</strong> ${r.price}</p>
-
       <hr>
-
       <p>⭐ Affordability: ${affordability}</p>
       <p>🍽 Bang for Buck: ${bang}</p>
-
       <h3>💬 Reviews</h3>
       ${r.reviews.map(rv => `<p>• ${rv.text}</p>`).join("")}
-
-    <a href="tel:${r.phone}">
-      <button>📞 Call Restaurant</button>
-    </a>
-
-    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.name + " " + r.address)}" target="_blank">
-      <button>📍 Make the travel?</button>
-    </a>
-  `;
-
-  modal.classList.add("active");
-
-  // CLOSE BUTTON
-  document.getElementById("closeModal").onclick = () => {
-    modal.classList.remove("active");
-  };
-}
-
-// CLICK OUTSIDE TO CLOSE
-document.getElementById("modal").addEventListener("click", (e) => {
-  if (e.target.id === "modal") {
-    e.currentTarget.classList.remove("active");
+    `;
+    modal.classList.remove("hidden");
   }
+
+  closeModal.onclick = () => modal.classList.add("hidden");
+
+  function filterAndRender() {
+    const search = searchInput.value.toLowerCase();
+    const borough = boroughFilter.value;
+    const budgetOnly = budgetToggle.checked;
+    const sort = sortFilter.value;
+
+    let filtered = restaurants.filter(r =>
+      r.name.toLowerCase().includes(search)
+    );
+
+    if (borough !== "all") {
+      filtered = filtered.filter(r => r.borough === borough);
+    }
+
+    if (budgetOnly) {
+      filtered = filtered.filter(r => r.priceValue <= 20);
+    }
+
+    if (sort === "cheap") {
+      filtered.sort((a, b) => a.priceValue - b.priceValue);
+    }
+
+    if (sort === "value") {
+      filtered.sort((a, b) => {
+        const aScore = calculateRatings(a.reviews, a.priceValue).bang / a.priceValue;
+        const bScore = calculateRatings(b.reviews, b.priceValue).bang / b.priceValue;
+        return bScore - aScore;
+      });
+    }
+
+    render(filtered);
+  }
+
+  searchInput.addEventListener("input", filterAndRender);
+  boroughFilter.addEventListener("change", filterAndRender);
+  budgetToggle.addEventListener("change", filterAndRender);
+  sortFilter.addEventListener("change", filterAndRender);
+
+  render(restaurants);
 });
