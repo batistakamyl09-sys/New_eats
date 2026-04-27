@@ -1,5 +1,4 @@
 const restaurants = [
-
   // 🟢 MANHATTAN (8)
   {
     name: "Los Tacos No.1",
@@ -9,7 +8,7 @@ const restaurants = [
     priceValue: 15,
     price: "$10-15",
     phone: "212-256-0343",
-    img: "https://source.unsplash.com/400x300/?tacos",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/2339352865319360989",
     featured: true,
     reviews: [
       { text: "Incredible tacos for cheap!", rating: 5 },
@@ -24,7 +23,7 @@ const restaurants = [
     priceValue: 10,
     price: "$5-10",
     phone: "212-366-1182",
-    img: "https://source.unsplash.com/400x300/?pizza",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/15705720017743512884",
     featured: true,
     reviews: [
       { text: "Classic NYC slice", rating: 4 },
@@ -39,7 +38,7 @@ const restaurants = [
     priceValue: 10,
     price: "$8-12",
     phone: "347-527-1505",
-    img: "https://source.unsplash.com/400x300/?gyro",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/11032149828451296615",
     featured: true,
     reviews: [
       { text: "Legendary street food", rating: 5 },
@@ -54,7 +53,7 @@ const restaurants = [
     priceValue: 14,
     price: "$10-15",
     phone: "212-786-2068",
-    img: "https://source.unsplash.com/400x300/?noodles",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/395321749729998616",
     featured: false,
     reviews: [
       { text: "Spicy and flavorful", rating: 5 },
@@ -69,7 +68,7 @@ const restaurants = [
     priceValue: 8,
     price: "$5-10",
     phone: "212-366-0444",
-    img: "https://source.unsplash.com/400x300/?falafel",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/5588023535887803934",
     featured: false,
     reviews: [
       { text: "Cheap and delicious", rating: 5 },
@@ -84,7 +83,7 @@ const restaurants = [
     priceValue: 12,
     price: "$6-12",
     phone: "212-966-4100",
-    img: "https://source.unsplash.com/400x300/?pepperoni-pizza",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/3525335302134951367",
     featured: true,
     reviews: [
       { text: "Best pepperoni slice", rating: 5 },
@@ -99,7 +98,7 @@ const restaurants = [
     priceValue: 14,
     price: "$10-15",
     phone: "917-261-7000",
-    img: "https://source.unsplash.com/400x300/?burger",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/7558577942569691585",
     featured: false,
     reviews: [
       { text: "Juicy burgers", rating: 5 },
@@ -114,7 +113,7 @@ const restaurants = [
     priceValue: 18,
     price: "$12-18",
     phone: "646-747-7200",
-    img: "https://source.unsplash.com/400x300/?fast-food",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/606900623655521591",
     featured: false,
     reviews: [
       { text: "Consistent quality", rating: 4 },
@@ -131,7 +130,7 @@ const restaurants = [
     priceValue: 20,
     price: "$10-20",
     phone: "718-258-1367",
-    img: "https://source.unsplash.com/400x300/?pizza",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/14339643529991252059",
     featured: true,
     reviews: [
       { text: "Legendary pizza spot", rating: 5 },
@@ -146,7 +145,7 @@ const restaurants = [
     priceValue: 15,
     price: "$10-15",
     phone: "718-449-1230",
-    img: "https://source.unsplash.com/400x300/?sicilian-pizza",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/7712852864569445597",
     featured: true,
     reviews: [
       { text: "Famous square slice", rating: 5 },
@@ -161,7 +160,7 @@ const restaurants = [
     priceValue: 12,
     price: "$8-12",
     phone: "718-554-0527",
-    img: "https://source.unsplash.com/400x300/?street-tacos",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/10004724909002099941",
     featured: false,
     reviews: [
       { text: "Authentic tacos", rating: 5 },
@@ -176,7 +175,7 @@ const restaurants = [
     priceValue: 14,
     price: "$10-15",
     phone: "347-987-4321",
-    img: "https://source.unsplash.com/400x300/?burger,spicy",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/18174342153197968426",
     featured: false,
     reviews: [
       { text: "Spicy burgers hit", rating: 5 },
@@ -191,7 +190,7 @@ const restaurants = [
     priceValue: 12,
     price: "$6-12",
     phone: "347-987-3747",
-    img: "https://source.unsplash.com/400x300/?pizza-slice",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/10537666941481040769",
     featured: false,
     reviews: [
       { text: "Creative slices", rating: 5 },
@@ -206,7 +205,7 @@ const restaurants = [
     priceValue: 14,
     price: "$10-15",
     phone: "347-555-1111",
-    img: "https://source.unsplash.com/400x300/?birria-tacos",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/12478076486399820741",
     featured: true,
     reviews: [
       { text: "Insane birria tacos", rating: 5 },
@@ -221,7 +220,7 @@ const restaurants = [
     priceValue: 18,
     price: "$12-20",
     phone: "718-852-5257",
-    img: "https://source.unsplash.com/400x300/?cheesecake",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/4455755993239490975",
     featured: false,
     reviews: [
       { text: "Famous cheesecake", rating: 5 },
@@ -236,7 +235,7 @@ const restaurants = [
     priceValue: 10,
     price: "$7-12",
     phone: "718-975-3444",
-    img: "https://source.unsplash.com/400x300/?halal-food",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/18077867890135338361",
     featured: false,
     reviews: [
       { text: "Cheap and filling", rating: 5 },
@@ -253,7 +252,7 @@ const restaurants = [
     priceValue: 12,
     price: "$8-12",
     phone: "718-728-9769",
-    img: "https://source.unsplash.com/400x300/?falafel",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/16776155365432714017",
     featured: true,
     reviews: [
       { text: "Best falafel", rating: 5 },
@@ -268,7 +267,7 @@ const restaurants = [
     priceValue: 14,
     price: "$10-15",
     phone: "718-204-1401",
-    img: "https://source.unsplash.com/400x300/?arepas",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/6697668701571587721",
     featured: false,
     reviews: [
       { text: "Flavorful arepas", rating: 5 },
@@ -283,7 +282,7 @@ const restaurants = [
     priceValue: 18,
     price: "$12-20",
     phone: "718-899-9599",
-    img: "https://source.unsplash.com/400x300/?thai-food",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/12872388463531661994",
     featured: false,
     reviews: [
       { text: "Authentic Thai", rating: 5 },
@@ -298,7 +297,7 @@ const restaurants = [
     priceValue: 15,
     price: "$10-18",
     phone: "718-321-3838",
-    img: "https://source.unsplash.com/400x300/?dumplings",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/9421184889390858122",
     featured: true,
     reviews: [
       { text: "Soup dumplings amazing", rating: 5 },
@@ -313,7 +312,7 @@ const restaurants = [
     priceValue: 20,
     price: "$15-20",
     phone: "718-545-8666",
-    img: "https://source.unsplash.com/400x300/?greek-food",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/12750752374685682272",
     featured: false,
     reviews: [
       { text: "Fresh seafood", rating: 5 },
@@ -328,7 +327,7 @@ const restaurants = [
     priceValue: 18,
     price: "$12-18",
     phone: "718-433-3888",
-    img: "https://source.unsplash.com/400x300/?indian-food",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/441329237449850435",
     featured: false,
     reviews: [
       { text: "Rich flavors", rating: 5 },
@@ -343,7 +342,7 @@ const restaurants = [
     priceValue: 20,
     price: "$15-20",
     phone: "347-448-6040",
-    img: "https://source.unsplash.com/400x300/?mexican-food",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/7800825179492826914",
     featured: false,
     reviews: [
       { text: "Authentic dishes", rating: 5 },
@@ -358,7 +357,7 @@ const restaurants = [
     priceValue: 12,
     price: "$8-12",
     phone: "347-555-2222",
-    img: "https://source.unsplash.com/400x300/?gyro",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/1272297246456965828",
     featured: false,
     reviews: [
       { text: "Reliable food", rating: 4 },
@@ -375,7 +374,7 @@ const restaurants = [
     priceValue: 15,
     price: "$10-15",
     phone: "718-842-2100",
-    img: "https://source.unsplash.com/400x300/?tacos",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/5263091683084059027",
     featured: true,
     reviews: [
       { text: "Authentic tacos", rating: 5 },
@@ -390,7 +389,7 @@ const restaurants = [
     priceValue: 10,
     price: "$5-10",
     phone: "718-220-0000",
-    img: "https://source.unsplash.com/400x300/?jamaican-food",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/8190452297706796324",
     featured: false,
     reviews: [
       { text: "Great patties", rating: 5 },
@@ -405,7 +404,7 @@ const restaurants = [
     priceValue: 15,
     price: "$10-15",
     phone: "718-401-2532",
-    img: "https://source.unsplash.com/400x300/?mexican-food",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/10813038024618396305",
     featured: false,
     reviews: [
       { text: "Homestyle cooking", rating: 5 },
@@ -420,7 +419,7 @@ const restaurants = [
     priceValue: 18,
     price: "$12-20",
     phone: "718-489-9397",
-    img: "https://source.unsplash.com/400x300/?soul-food",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/17635624174015894752",
     featured: false,
     reviews: [
       { text: "Great vibe", rating: 5 },
@@ -435,7 +434,7 @@ const restaurants = [
     priceValue: 12,
     price: "$8-15",
     phone: "718-364-3867",
-    img: "https://source.unsplash.com/400x300/?sandwich",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/16184666674329316032",
     featured: false,
     reviews: [
       { text: "Amazing sandwiches", rating: 5 },
@@ -450,7 +449,7 @@ const restaurants = [
     priceValue: 10,
     price: "$6-12",
     phone: "718-555-4444",
-    img: "https://source.unsplash.com/400x300/?fried-chicken",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/1987390514976059377",
     featured: false,
     reviews: [
       { text: "Cheap and filling", rating: 4 },
@@ -465,7 +464,7 @@ const restaurants = [
     priceValue: 9,
     price: "$5-10",
     phone: "718-555-3333",
-    img: "https://source.unsplash.com/400x300/?fried-chicken",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/13968799751963071472",
     featured: false,
     reviews: [
       { text: "Budget staple", rating: 4 },
@@ -480,7 +479,7 @@ const restaurants = [
     priceValue: 20,
     price: "$15-20",
     phone: "718-885-1459",
-    img: "https://source.unsplash.com/400x300/?seafood",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/3637831161296420366",
     featured: false,
     reviews: [
       { text: "Fresh seafood", rating: 5 },
@@ -497,7 +496,7 @@ const restaurants = [
     priceValue: 18,
     price: "$10-18",
     phone: "718-442-9401",
-    img: "https://source.unsplash.com/400x300/?pizza",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/16814787843808276551",
     featured: true,
     reviews: [
       { text: "Best pizza on island", rating: 5 },
@@ -512,7 +511,7 @@ const restaurants = [
     priceValue: 15,
     price: "$10-15",
     phone: "718-667-9749",
-    img: "https://source.unsplash.com/400x300/?pizza-slice",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/4085122637710317335",
     featured: false,
     reviews: [
       { text: "Thin crust perfection", rating: 5 },
@@ -527,7 +526,7 @@ const restaurants = [
     priceValue: 18,
     price: "$12-20",
     phone: "718-240-9240",
-    img: "https://source.unsplash.com/400x300/?curry",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/10736079246323478807",
     featured: false,
     reviews: [
       { text: "Unique flavors", rating: 5 },
@@ -542,7 +541,7 @@ const restaurants = [
     priceValue: 10,
     price: "$5-10",
     phone: "718-668-8770",
-    img: "https://source.unsplash.com/400x300/?bakery",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/17985416898020832679",
     featured: false,
     reviews: [
       { text: "Great pastries", rating: 5 },
@@ -557,7 +556,7 @@ const restaurants = [
     priceValue: 8,
     price: "$5-10",
     phone: "718-273-9700",
-    img: "https://source.unsplash.com/400x300/?ice-cream",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/2445734203762821880",
     featured: false,
     reviews: [
       { text: "Refreshing treats", rating: 5 },
@@ -572,7 +571,7 @@ const restaurants = [
     priceValue: 14,
     price: "$8-15",
     phone: "718-987-2424",
-    img: "https://source.unsplash.com/400x300/?pizza",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/2054754855520560576",
     featured: false,
     reviews: [
       { text: "Solid slices", rating: 4 },
@@ -587,7 +586,7 @@ const restaurants = [
     priceValue: 15,
     price: "$10-15",
     phone: "718-351-2900",
-    img: "https://source.unsplash.com/400x300/?pasta",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/5409471229446013768",
     featured: false,
     reviews: [
       { text: "Fresh pasta", rating: 5 },
@@ -602,14 +601,15 @@ const restaurants = [
     priceValue: 15,
     price: "$10-15",
     phone: "718-815-1234",
-    img: "https://source.unsplash.com/400x300/?rice-curry",
+    img: "http://googleusercontent.com/image_collection/image_retrieval/1330173746208675407",
     featured: false,
     reviews: [
       { text: "Flavor packed", rating: 5 },
       { text: "Hidden gem", rating: 5 }
     ]
   }
-];document.addEventListener("DOMContentLoaded", () => {
+];
+ document.addEventListener("DOMContentLoaded", () => {
 
   function calculateRatings(reviews, priceValue) {
     const avg = reviews.reduce((a, b) => a + b.rating, 0) / reviews.length;
@@ -633,19 +633,34 @@ const restaurants = [
       const card = document.createElement("div");
       card.className = "card";
 
-      card.innerHTML = `
-        <img src="${r.img}">
-        <div class="card-content">
-          ${r.featured ? `<span style="color:#00c853;">★ Featured</span>` : ""}
-          <h3>${r.name}</h3>
-          <p>${r.borough} • ${r.cuisine}</p>
-          <p>${r.price}</p>
-          <div class="rating">⭐ ${affordability}</div>
-          <div class="rating">🍽 ${bang}</div>
-        </div>
+      // 🔥 IMAGE SLIDESHOW
+      let currentIndex = 0;
+      const img = document.createElement("img");
+      img.src = r.images[0];
+
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % r.images.length;
+        img.src = r.images[currentIndex];
+      }, 2500);
+
+      card.appendChild(img);
+
+      const content = document.createElement("div");
+      content.className = "card-content";
+
+      content.innerHTML = `
+        ${r.featured ? `<span style="color:#00c853;">★ Featured</span>` : ""}
+        <h3>${r.name}</h3>
+        <p>${r.borough} • ${r.cuisine}</p>
+        <p>${r.price}</p>
+        <div class="rating">⭐ ${affordability}</div>
+        <div class="rating">🍽 ${bang}</div>
       `;
 
+      card.appendChild(content);
+
       card.onclick = () => openModal(r, bang, affordability);
+
       list.appendChild(card);
     });
   }
@@ -653,6 +668,8 @@ const restaurants = [
   function openModal(r, bang, affordability) {
     const modal = document.getElementById("modal");
     const body = document.getElementById("modalBody");
+
+    document.body.style.overflow = "hidden";
 
     body.innerHTML = `
       <h2>${r.name}</h2>
@@ -670,16 +687,27 @@ const restaurants = [
       </a>
 
       <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.name + " " + r.address)}" target="_blank">
-        <button>📍 Make the travel?</button>
+        <button>📍 Directions</button>
       </a>
     `;
 
     modal.classList.remove("hidden");
   }
 
+  // ❌ CLOSE BUTTON
   document.getElementById("closeModal").onclick = () => {
     document.getElementById("modal").classList.add("hidden");
+    document.body.style.overflow = "auto";
   };
+
+  // ❌ CLICK OUTSIDE CLOSE
+  const modal = document.getElementById("modal");
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "auto";
+    }
+  });
 
   function filterAndRender() {
     const search = document.getElementById("search").value.toLowerCase();
