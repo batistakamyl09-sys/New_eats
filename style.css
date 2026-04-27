@@ -6,7 +6,7 @@
   height: 100%;
   background: rgba(0,0,0,0.85);
 
-  display: none;
+  display: none; /* 🔥 FIX */
   justify-content: center;
   align-items: center;
 
@@ -17,6 +17,7 @@
   display: flex;
 }
 
+/* MODAL CONTENT */
 .modal-content {
   position: relative;
   background: #111;
@@ -29,6 +30,7 @@
   animation: fadeIn 0.3s ease;
 }
 
+/* CLOSE BUTTON (REAL X BUTTON) */
 #closeModal {
   position: absolute;
   top: 10px;
