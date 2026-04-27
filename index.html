@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Budget Bites NYC</title>
   <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script> <!-- ✅ FIX -->
+  <script src="app.js" defer></script>
 </head>
 <body>
 
@@ -16,11 +16,11 @@
   <div class="controls">
     <select id="boroughFilter">
       <option value="all">All Boroughs</option>
-      <option value="Manhattan">Manhattan</option>
-      <option value="Brooklyn">Brooklyn</option>
-      <option value="Queens">Queens</option>
-      <option value="Bronx">Bronx</option>
-      <option value="Staten Island">Staten Island</option>
+      <option>Manhattan</option>
+      <option>Brooklyn</option>
+      <option>Queens</option>
+      <option>Bronx</option>
+      <option>Staten Island</option>
     </select>
 
     <select id="sortFilter">
@@ -38,7 +38,6 @@
 
 <main id="restaurantList"></main>
 
-<!-- ✅ MODAL -->
 <div id="modal" class="modal hidden">
   <div class="modal-content">
     <span id="closeModal">&times;</span>
