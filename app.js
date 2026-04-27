@@ -17,9 +17,9 @@ const restaurants = [
 
     phone: "212-256-0343",
 
-    img:   "https://i.imgur.com/abc123.jpg",
+    img:   "https://i.imgur.com/abc123.jpg"
 
-    "https://i.imgur.com/def456.jpg",
+    "https://i.imgur.com/def456.jpg"
 
     "https://i.imgur.com/ghi789.jpg",
 
