@@ -610,6 +610,7 @@ const restaurants = [
   }
 ];
  document.addEventListener("DOMContentLoaded", () => {
+];document.addEventListener("DOMContentLoaded", () => {
 
   function calculateRatings(reviews, priceValue) {
     const avg = reviews.reduce((a, b) => a + b.rating, 0) / reviews.length;
@@ -661,6 +662,19 @@ const restaurants = [
 
       card.onclick = () => openModal(r, bang, affordability);
 
+      card.innerHTML = `
+        <img src="${r.img}">
+        <div class="card-content">
+          ${r.featured ? `<span style="color:#00c853;">★ Featured</span>` : ""}
+          <h3>${r.name}</h3>
+          <p>${r.borough} • ${r.cuisine}</p>
+          <p>${r.price}</p>
+          <div class="rating">⭐ ${affordability}</div>
+          <div class="rating">🍽 ${bang}</div>
+        </div>
+      `;
+
+      card.onclick = () => openModal(r, bang, affordability);
       list.appendChild(card);
     });
   }
@@ -688,6 +702,7 @@ const restaurants = [
 
       <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.name + " " + r.address)}" target="_blank">
         <button>📍 Directions</button>
+        <button>📍 Make the travel?</button>
       </a>
     `;
 
@@ -708,6 +723,10 @@ const restaurants = [
       document.body.style.overflow = "auto";
     }
   });
+
+  document.getElementById("closeModal").onclick = () => {
+    document.getElementById("modal").classList.add("hidden");
+  };
 
   function filterAndRender() {
     const search = document.getElementById("search").value.toLowerCase();
