@@ -611,28 +611,17 @@ const restaurants = [
 ];
  document.addEventListener("DOMContentLoaded", () => {
 ];document.addEventListener("DOMContentLoaded", () => {
+function openModal(r, bang, affordability) {
+  const modal = document.getElementById("modal");
+  const body = document.getElementById("modalBody");
 
-  function calculateRatings(reviews, priceValue) {
-    const avg = reviews.reduce((a, b) => a + b.rating, 0) / reviews.length;
-    const bang = Math.round(avg);
+  body.innerHTML = `
+    <span id="closeModal">&times;</span>
 
-    let affordability = 5;
-    if (priceValue > 20) affordability = 2;
-    else if (priceValue > 15) affordability = 3;
-    else if (priceValue > 10) affordability = 4;
+    <h2>${r.name}</h2>
+    <p><strong>${r.cuisine}</strong> • ${r.borough}</p>
 
-    return { bang, affordability };
-  }
-
-  function render(data) {
-    const list = document.getElementById("restaurantList");
-    list.innerHTML = "";
-
-    data.forEach(r => {
-      const { bang, affordability } = calculateRatings(r.reviews, r.priceValue);
-
-      const card = document.createElement("div");
-      card.className = "card";
+    <img src="${r.img}" alt="${r.name}">
 
       // 🔥 IMAGE SLIDESHOW
       let currentIndex = 0;
@@ -674,14 +663,10 @@ const restaurants = [
         </div>
       `;
 
-      card.onclick = () => openModal(r, bang, affordability);
-      list.appendChild(card);
-    });
-  }
+    <hr>
 
-  function openModal(r, bang, affordability) {
-    const modal = document.getElementById("modal");
-    const body = document.getElementById("modalBody");
+    <p>⭐ Affordability: ${affordability}</p>
+    <p>🍽 Bang for Buck: ${bang}</p>
 
     document.body.style.overflow = "hidden";
 
@@ -696,9 +681,9 @@ const restaurants = [
       <h3>💬 Reviews</h3>
       ${r.reviews.map(rv => `<p>• ${rv.text}</p>`).join("")}
 
-      <a href="tel:${r.phone}">
-        <button>📞 Call Restaurant</button>
-      </a>
+    <a href="tel:${r.phone}">
+      <button>📞 Call Restaurant</button>
+    </a>
 
       <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.name + " " + r.address)}" target="_blank">
         <button>📍 Directions</button>
@@ -706,8 +691,7 @@ const restaurants = [
       </a>
     `;
 
-    modal.classList.remove("hidden");
-  }
+  modal.classList.add("active");
 
   // ❌ CLOSE BUTTON
   document.getElementById("closeModal").onclick = () => {
@@ -725,46 +709,13 @@ const restaurants = [
   });
 
   document.getElementById("closeModal").onclick = () => {
-    document.getElementById("modal").classList.add("hidden");
+    modal.classList.remove("active");
   };
+}
 
-  function filterAndRender() {
-    const search = document.getElementById("search").value.toLowerCase();
-    const borough = document.getElementById("boroughFilter").value;
-    const budgetOnly = document.getElementById("budgetToggle").checked;
-    const sort = document.getElementById("sortFilter").value;
-
-    let filtered = restaurants.filter(r =>
-      r.name.toLowerCase().includes(search)
-    );
-
-    if (borough !== "all") {
-      filtered = filtered.filter(r => r.borough === borough);
-    }
-
-    if (budgetOnly) {
-      filtered = filtered.filter(r => r.priceValue <= 20);
-    }
-
-    if (sort === "cheap") {
-      filtered.sort((a, b) => a.priceValue - b.priceValue);
-    }
-
-    if (sort === "value") {
-      filtered.sort((a, b) => {
-        const aScore = calculateRatings(a.reviews, a.priceValue).bang / a.priceValue;
-        const bScore = calculateRatings(b.reviews, b.priceValue).bang / b.priceValue;
-        return bScore - aScore;
-      });
-    }
-
-    render(filtered);
+// CLICK OUTSIDE TO CLOSE
+document.getElementById("modal").addEventListener("click", (e) => {
+  if (e.target.id === "modal") {
+    e.currentTarget.classList.remove("active");
   }
-
-  document.getElementById("search").addEventListener("input", filterAndRender);
-  document.getElementById("boroughFilter").addEventListener("change", filterAndRender);
-  document.getElementById("budgetToggle").addEventListener("change", filterAndRender);
-  document.getElementById("sortFilter").addEventListener("change", filterAndRender);
-
-  render(restaurants);
 });
