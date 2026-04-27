@@ -1,8 +1,60 @@
-/* 🔲 MODAL OVERLAY */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0b0b;
+  color: white;
+}
+
+/* HEADER */
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #111;
+}
+
+input, select {
+  padding: 8px;
+  margin: 5px;
+  border-radius: 6px;
+  border: none;
+}
+
+/* GRID */
+#restaurantList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+/* CARD */
+.card {
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 10px;
+}
+
+/* ✅ MODAL SYSTEM FIXED */
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0,0,0,0.85);
 
   display: flex;
   justify-content: center;
@@ -10,91 +62,50 @@
 
   opacity: 0;
   pointer-events: none;
-
-  transition: opacity 0.25s ease;
-  z-index: 2000;
+  transition: 0.25s;
 }
 
-/* ✅ JS will toggle this */
+/* ✅ ACTIVE STATE */
 .modal:not(.hidden) {
   opacity: 1;
   pointer-events: all;
 }
 
-/* 🧱 MODAL CONTENT */
+/* ✅ HIDDEN CLASS */
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* MODAL CONTENT */
 .modal-content {
-  position: relative;
   background: #111;
   border: 1px solid #00c853;
   padding: 20px;
-  border-radius: 14px;
+  border-radius: 12px;
   width: 90%;
-  max-width: 520px;
+  max-width: 500px;
 
-  transform: translateY(20px) scale(0.95);
-  opacity: 0;
-
-  transition: all 0.25s ease;
+  transform: scale(0.9);
+  transition: 0.25s;
 }
 
-/* animate in */
 .modal:not(.hidden) .modal-content {
-  transform: translateY(0) scale(1);
-  opacity: 1;
+  transform: scale(1);
 }
 
-/* ❌ CLOSE BUTTON */
+/* CLOSE */
 #closeModal {
   position: absolute;
-  top: 10px;
   right: 15px;
-  font-size: 26px;
+  top: 10px;
+  font-size: 24px;
   cursor: pointer;
-  color: #ccc;
-  transition: 0.2s;
 }
 
-#closeModal:hover {
-  color: #00c853;
-}
-
-/* 🖼 MODAL IMAGE */
-#modalImg {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  object-fit: cover;
-}
-
-/* ⬅➡ IMAGE NAV BUTTONS */
+/* IMAGE NAV */
 #prev, #next {
-  position: absolute;
-  top: 40%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  border: 1px solid #00c853;
-  color: white;
+  margin: 5px;
   padding: 6px 10px;
   cursor: pointer;
-  border-radius: 8px;
-  transition: 0.2s;
-}
-
-#prev:hover, #next:hover {
-  background: #00c853;
-}
-
-#prev { left: 10px; }
-#next { right: 10px; }
-
-/* 📱 MOBILE POLISH */
-@media (max-width: 500px) {
-  .modal-content {
-    padding: 15px;
-    border-radius: 10px;
-  }
-
-  #closeModal {
-    font-size: 22px;
-  }
 }
