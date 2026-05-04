@@ -107,4 +107,66 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   render(restaurants);
+
+  // ================= dbBASE AUTH (ADDED FEATURE) =================
+
+  const db_URL = "https://ybgnuyenwqqylxtlunzp.dbbase.co";
+  const db_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InliZ251eWVud3FxeWx4dGx1bnpwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTc0NjQ2MiwiZXhwIjoyMDkxMzIyNDYyfQ.esvIiQHlxo6q1WHSvFzVRE3jJ1MSAfJ_Hz039zlibr8";
+
+  const db = window.dbbase.createClient(dbBASE_URL, dbBASE_ANON_KEY);
+
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const signupBtn = document.getElementById("signup");
+  const loginBtn = document.getElementById("login");
+  const logoutBtn = document.getElementById("logout");
+
+  signupBtn.onclick = async () => {
+    const { error } = await db.auth.signUp({
+      email: emailInput.value,
+      password: passwordInput.value
+    });
+    if (error) alert(error.message);
+    else alert("Account created!");
+  };
+
+  loginBtn.onclick = async () => {
+    const { error } = await db.auth.signInWithPassword({
+      email: emailInput.value,
+      password: passwordInput.value
+    });
+    if (error) alert(error.message);
+    else {
+      alert("Logged in!");
+      updateUI();
+    }
+  };
+
+  logoutBtn.onclick = async () => {
+    await db.auth.signOut();
+    updateUI();
+  };
+
+  async function updateUI() {
+    const { data: { session } } = await db.auth.getSession();
+
+    if (session) {
+      logoutBtn.style.display = "inline-block";
+      loginBtn.style.display = "none";
+      signupBtn.style.display = "none";
+      list.style.display = "grid";
+    } else {
+      logoutBtn.style.display = "none";
+      loginBtn.style.display = "inline-block";
+      signupBtn.style.display = "inline-block";
+      list.style.display = "none";
+    }
+  }
+
+  updateUI();
+
+  dbbase.auth.onAuthStateChange(() => {
+    updateUI();
+  });
+
 });
