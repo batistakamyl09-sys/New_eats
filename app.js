@@ -111,9 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // ================= SUPABASE AUTH (FIXED ONLY) =================
 
   const SUPABASE_URL = "https://hhffdmedouzlbxwskngh.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoZmZkbWVkb3V6bGJ4d3NrbmdoIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Nzg4NjU2MiwiZXhwIjoyMDkzNDYyNTYyfQ.K5Kzs-bZO9Zb-DIshFIw0QwtOGrzKAEIILObGLOevOQ";
+  const SUPABASE_ANON_KEY = "sb_publishable_eM8NYWujA3pW3PBbOtgleA_GXhZK_4Y";
 
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const supabaseDB = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.getElementById("logout");
 
   signupBtn.onclick = async () => {
-    const { error } = await supabase.auth.signUp({
+    const { error } = await supabaseDB.auth.signUp({
       email: emailInput.value,
       password: passwordInput.value
     });
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   loginBtn.onclick = async () => {
-    const { error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabaseDB.auth.signInWithPassword({
       email: emailInput.value,
       password: passwordInput.value
     });
@@ -143,12 +143,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   logoutBtn.onclick = async () => {
-    await supabase.auth.signOut();
+    await supabaseDB.auth.signOut();
     updateUI();
   };
 
   async function updateUI() {
-    const { data: { session } } = await supabase.auth.getSession();
+    const { data: { session } } = await supabaseDB.auth.getSession();
 
     if (session) {
       logoutBtn.style.display = "inline-block";
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateUI();
 
-  supabase.auth.onAuthStateChange(() => {
+  supabaseDB.auth.onAuthStateChange(() => {
     updateUI();
   });
 
