@@ -4,12 +4,25 @@
   <meta charset="UTF-8">
   <title>Budget Bites NYC</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- ✅ SUPABASE CDN (REQUIRED) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
   <script src="app.js" defer></script>
 </head>
 <body>
 
 <header class="header">
   <h1>🍔 Budget Bites NYC</h1>
+
+  <!-- ✅ AUTH UI (ADDED — matches JS exactly) -->
+  <div id="authBox" style="margin-bottom:10px;">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button id="signup">Sign Up</button>
+    <button id="login">Login</button>
+    <button id="logout" style="display:none;">Logout</button>
+  </div>
 
   <input type="text" id="search" placeholder="Search cheap eats...">
 
