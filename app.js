@@ -108,12 +108,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   render(restaurants);
 
-  // ================= dbBASE AUTH (ADDED FEATURE) =================
+  // ================= SUPABASE AUTH (FIXED ONLY) =================
 
-  const db_URL = "https://ybgnuyenwqqylxtlunzp.dbbase.co";
-  const db_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InliZ251eWVud3FxeWx4dGx1bnpwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTc0NjQ2MiwiZXhwIjoyMDkxMzIyNDYyfQ.esvIiQHlxo6q1WHSvFzVRE3jJ1MSAfJ_Hz039zlibr8";
+  const SUPABASE_URL = "https://hhffdmedouzlbxwskngh.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoZmZkbWVkb3V6bGJ4d3NrbmdoIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Nzg4NjU2MiwiZXhwIjoyMDkzNDYyNTYyfQ.K5Kzs-bZO9Zb-DIshFIw0QwtOGrzKAEIILObGLOevOQ";
 
-  const db = window.dbbase.createClient(dbBASE_URL, dbBASE_ANON_KEY);
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.getElementById("logout");
 
   signupBtn.onclick = async () => {
-    const { error } = await db.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: emailInput.value,
       password: passwordInput.value
     });
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   loginBtn.onclick = async () => {
-    const { error } = await db.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email: emailInput.value,
       password: passwordInput.value
     });
@@ -143,12 +143,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   logoutBtn.onclick = async () => {
-    await db.auth.signOut();
+    await supabase.auth.signOut();
     updateUI();
   };
 
   async function updateUI() {
-    const { data: { session } } = await db.auth.getSession();
+    const { data: { session } } = await supabase.auth.getSession();
 
     if (session) {
       logoutBtn.style.display = "inline-block";
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateUI();
 
-  dbbase.auth.onAuthStateChange(() => {
+  supabase.auth.onAuthStateChange(() => {
     updateUI();
   });
 
